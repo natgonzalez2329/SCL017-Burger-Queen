@@ -5,7 +5,7 @@ const Extras = ({dataExtras}) => {
     <div>
       { 
         dataExtras.map((item) => (
-          <li key={item.id}>{item.item} - {item.price}</li>
+          <li key={item.id} className="btn btn-success m-2">{item.item} - {item.price}</li>
         ))
       }
     </div>

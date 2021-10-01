@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from "./Header";
+import ModalEnroll from '../components/ModalEnroll';
 import "../index.css"
 
 const Home = () => {
+  const [modalEnroll, setModalEnroll] = useState(false);
+
   return (
     <div className="m-0 container-fluid  vh-100 text-white background">
       <Header />
+      <div className="row">
+        <button onClick={() => setModalEnroll(true)}>ENROLL</button>
+        {modalEnroll && <ModalEnroll closeModal={setModalEnroll} />}
+      </div>
+      <div className="m-0 row justify-content-center align-items-center">
       <div className="row p-5 m-5">
         <div className="col-12 d-flex justify-content-center align-items-center">
           <form>
@@ -19,7 +27,7 @@ const Home = () => {
           </form>
         </div>
       </div>
-      <div className="row pt-5 mt-5">
+      <div className="row pt-5 mt-5 d-flex align-items-end">
         <div className="col-4 d-flex justify-content-center">
         <Link to='/menu' className='btn btn-warning btn-lg text-white'>
             MENU
@@ -35,6 +43,7 @@ const Home = () => {
           PAID OUT
         </Link>
         </div>
+      </div>
       </div>
     </div>
   )

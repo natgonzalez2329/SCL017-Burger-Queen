@@ -23,6 +23,12 @@ code {
   /* min-width: 100%; */
 /*   min-height: 100%; */
  /*  position: fixed; */
-  
-  
+
+}
+.mustache {
+  width: 15%;
+}
+
+.menu-tables {
+  height: 60%;
 }

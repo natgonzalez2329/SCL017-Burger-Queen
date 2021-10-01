@@ -5,7 +5,7 @@ const Drinks = ({dataDrinks}) => {
     <div>
       { 
         dataDrinks.map((item) => (
-          <li key={item.id}>{item.item} - {item.price}</li>
+          <li key={item.id} className="btn btn-primary m-2">{item.item} - {item.price}</li>
         ))
       }
     </div>

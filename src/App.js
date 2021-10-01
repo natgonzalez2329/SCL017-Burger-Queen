@@ -4,13 +4,14 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import Home from "./components/Home";
-import MenuTables from "./components/MenuTables";
-import Menu from "./components/Menu";
-import Cuisine from "./components/Cuisine";
-import PaidOut from "./components/PaidOut";
-import Tables from "./components/Tables";
-import NewTable from "./components/NewTable";
+import Home from "./viewComponents/Home";
+import MenuTables from "./viewComponents/MenuTables";
+import Menu from "./viewComponents/Menu";
+import Cuisine from "./viewComponents/Cuisine";
+import PaidOut from "./viewComponents/PaidOut";
+import Tables from "./viewComponents/Tables";
+import NewTable from "./viewComponents/NewTable";
+import NotFound from './viewComponents/NotFound';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path='/newTable'>
             <NewTable />
           </Route>
+          <Route component={NotFound}></Route>
         </Switch>
       </div>
     </Router>

@@ -5,7 +5,7 @@ const Breakfast = ({dataBreakfast}) => {
     <div>
       {
           dataBreakfast.map((item) => (
-          <li key={item.id}>{item.item} - {item.price}</li>
+          <li key={item.id} className="btn btn-warning m-2">{item.item} - {item.price}</li>
         ))
       }
     </div>
