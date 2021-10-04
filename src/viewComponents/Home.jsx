@@ -1,28 +1,55 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from "./Header";
 import ModalEnroll from '../components/ModalEnroll';
+import { getStaffData } from '../firebase/Crud';
 import "../index.css"
 
 const Home = () => {
   const [modalEnroll, setModalEnroll] = useState(false);
+  const [idStaff, setIdStaff] = useState('');
+  const [error, setError] = useState(null);
+  const [routeMenuTable, setRouteManuTable] = useState(false);
+
+  const LinkToMenuTable = () => {
+    let history = useHistory();
+    history.push('/menuTables');
+  }
+
+  const accessStaff = async(e) => {
+    e.preventDefault();
+    const idStaffAccess = { idStaff };
+    console.log('4' + idStaffAccess)
+    const isExist = await getStaffData(idStaff);
+    if(!isExist) {
+      setError('ID doesn´t exist');
+      return
+    }
+    setIdStaff('');
+    setError(null);
+    setRouteManuTable(true);
+  }
 
   return (
     <div className="m-0 container-fluid  vh-100 text-white background">
       <Header />
       <div className="row">
-        <button onClick={() => setModalEnroll(true)}>ENROLL</button>
-        {modalEnroll && <ModalEnroll closeModal={setModalEnroll} />}
+        <div className="col-12 d-flex justify-content-end mr-5">
+          <button onClick={() => setModalEnroll(true)} className='btn btn-warning btn-lg text-white btn-sm'>ENROLL</button>
+          {modalEnroll && <ModalEnroll closeModal={setModalEnroll} />}
+        </div>
       </div>
       <div className="m-0 row justify-content-center align-items-center">
       <div className="row p-5 m-5">
         <div className="col-12 d-flex justify-content-center align-items-center">
-          <form>
-            <input type="text" placeholder="ID" className="form-control mb-2"/>
+          <form onSubmit={(e) => accessStaff(e)}>
+            {
+              error ? <span className="text-danger">{error}</span> : null
+            }
+            <input type="text" placeholder="ID" className="form-control mb-2" value={idStaff} onChange={(e) => setIdStaff(e.target.value)}/>
             <div className="col-12 d-flex justify-content-center">
-            <Link to='/menuTables' className='btn btn-warning btn-md text-white'>
-                ACCESS
-            </Link>
+                <button className='btn btn-warning btn-md text-white' type='submit'>ACCESS</button>
+                {routeMenuTable && LinkToMenuTable()}
             </div>
           </form>
         </div>
@@ -48,5 +75,5 @@ const Home = () => {
     </div>
   )
 }
-/* class="d-grid gap-2 d-md-flex justify-content-md" */
+
 export default Home
