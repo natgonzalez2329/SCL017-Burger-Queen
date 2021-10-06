@@ -1,5 +1,6 @@
 import db from '../Firebase';
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import { getIdCollection } from '../viewComponents/NewTable';
 
 
 const addStaffData = async(name, idStaff) => {
@@ -33,4 +34,16 @@ const getStaffData = async(id) => {
   return existStaff;
 }
 
-export { getStaffData, addStaffData }
+const addTablesData = async(table, client) => {
+  try {
+    const docRef = await addDoc(collection(db, "tables"), {
+      table,
+      client
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+export { getStaffData, addStaffData, addTablesData }

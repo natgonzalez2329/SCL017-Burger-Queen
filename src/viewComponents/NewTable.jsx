@@ -9,15 +9,18 @@ import Extras from '../menuComponents/Extras';
 import Drinks from '../menuComponents/Drinks';
 import ModalPay from '../components/ModalPay';
 import ModalCommand from '../components/ModalCommand';
+import Orders from '../menuComponents/Orders';
 import menuData from '../menu.json';
 
-const NewTable = () => {
+const NewTable = ({client, table}) => {
+  console.log(client);
   const getDataMenu= menuData;
 
     const [breakfast, setBreakfast] = useState([]);
     const [burgers, setBurgers] = useState([]);
     const [extras, setExtras] = useState([]);
     const [drinks, setDrinks] = useState([]);
+    const [orders, setOrders] = useState([]);
     const [modalPay, setModalPay] = useState(false);
     const [modalCommand, setModalCommand] = useState(false)
  /*    const [client, setClient] = useState('');
@@ -30,7 +33,6 @@ const NewTable = () => {
     setDrinks(getDataMenu.drinks);
   }, [getDataMenu]);
   
- 
 /*   const getDataTable = async() => {
     const querySnapshot = await getDocs(collection(db, "users"));
     let dataArray = [];
@@ -48,8 +50,8 @@ const NewTable = () => {
       <BackTableButton />
       <h1 className="text-center">New table</h1>
       <div className="row">
-        Table: <br/>
-        Client: <br/>
+        Table: {table}<br/>
+        Client: {client}<br/>
         Date: <br/>
         Waiter: {JSON.parse(localStorage.getItem('staffName'))} <br/>
         ID Waiter-Waitress: {JSON.parse(localStorage.getItem('staffId'))}
@@ -59,7 +61,11 @@ const NewTable = () => {
           <h1>MENU</h1>
           <ul>
             <h1>BREAKFAST</h1>
-              <Breakfast dataBreakfast={breakfast} />
+              <Breakfast 
+              dataBreakfast={breakfast} 
+              orderBreakfast={orders}
+              setOrderBreakfast={setOrders}
+              />
             <h1>BURGERS</h1>
               <Burgers dataBurgers={burgers} />
             <h1>EXTRAS</h1>
@@ -70,6 +76,9 @@ const NewTable = () => {
         </div>
         <div className="col-6">
           <h1># Order</h1>
+          <ul>
+            <Orders orders={orders}/>
+          </ul>
           <button onClick={() => setModalPay(true)}>PAY</button>
           {modalPay && <ModalPay closeModal={setModalPay} />}
           <button onClick={() => setModalCommand(true)}>COMMAND</button>

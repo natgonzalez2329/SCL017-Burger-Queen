@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +14,8 @@ import NewTable from "./viewComponents/NewTable";
 import NotFound from './viewComponents/NotFound';
 
 function App() {
+  const [client, setClient] = useState('');
+  const [table, setTable] = useState('');
   return (
     <Router>
       <div className='m-0 vh-100 container-fluid  bg-dark bg-gradient text-white'>
@@ -22,7 +24,7 @@ function App() {
             <Home />
           </Route>
           <Route path='/menuTables'>
-            <MenuTables />
+            <MenuTables newClientHandler={setClient} newTableClient={setTable}/>
           </Route>
           <Route path='/menu'>
             <Menu />
@@ -37,7 +39,7 @@ function App() {
             <Tables />
           </Route>
           <Route path='/newTable'>
-            <NewTable />
+            <NewTable client={client} table={table}/>
           </Route>
           <Route component={NotFound}></Route>
         </Switch>

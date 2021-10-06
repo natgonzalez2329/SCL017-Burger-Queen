@@ -1,30 +1,23 @@
 import React, { useState } from 'react';
-/* import { Link } from 'react-router-dom'; */
-import db from '../Firebase';
-import { collection, addDoc } from "firebase/firestore";
+import { useHistory } from 'react-router-dom';
+import { addTablesData } from '../firebase/Crud';
 import '../style/modalNewTable.css'
 
-const ModalNewTable = ({ closeModal }) => {
+const ModalNewTable = ({ closeModal, newClientHandler, newTableClient}) => {
 
   const [client, setClient] = useState('');
   const [table, setTable] = useState('');
 
+  let history = useHistory();
+
   const addTableClient = (e) =>{
     e.preventDefault();
     const collectionTable = { client, table };
+    newClientHandler(client);
+    newTableClient(table);
     console.log(collectionTable); 
-    addTables(table, client)
-  }
-  const addTables = async(table, client) => {
-    try {
-      const docRef = await addDoc(collection(db, "tables"), {
-        table,
-        client
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
+    addTablesData(table, client)
+    history.push('/newTable');
   }
 
   return (
@@ -38,9 +31,7 @@ const ModalNewTable = ({ closeModal }) => {
                     <input type="text" placeholder="Table" value={table} onChange={(e) => setTable(e.target.value)}/>
                     <div className='modal__footer'>
                       <button className="btn btn-danger m-2" onClick={() => closeModal(false)}>CANCEL</button>
-                      {/* <Link to='/newTable'>
-                      </Link> */}
-                        <button className='btn btn-warning text-white' type="submit">NEW TABLE</button>
+                      <button className='btn btn-warning text-white' type="submit">NEW TABLE</button>
                     </div>
                   </form>
                   <p>Name: {client} - Table: {table}</p>

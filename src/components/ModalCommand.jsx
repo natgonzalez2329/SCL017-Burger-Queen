@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ModalCommand = ({closeModal}) => {
   return (
@@ -9,7 +10,10 @@ const ModalCommand = ({closeModal}) => {
                   <span className='close__modal' onClick={() => closeModal(false)}> &times;</span>
                     <h3>Has been sent!!</h3>
                   <div class='modal__footer'>
-                    <button className="btn btn-danger m-2" onClick={() => closeModal(false)}>OK</button>
+                    <Link to='/'>
+                      <button className="btn btn-danger m-2" onClick={() => closeModal(false)}>OK</button>
+                    </Link>
+                    
                   </div>
                 </div>
               </div>

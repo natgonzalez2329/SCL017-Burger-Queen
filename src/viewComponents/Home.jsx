@@ -9,7 +9,7 @@ const Home = () => {
   const [modalEnroll, setModalEnroll] = useState(false);
   const [idStaff, setIdStaff] = useState('');
   const [error, setError] = useState(null);
-  const [routeMenuTable, setRouteManuTable] = useState(false);
+  const [routeMenuTable, setRouteMenuTable] = useState(false);
 
   const LinkToMenuTable = () => {
     let history = useHistory();
@@ -27,7 +27,7 @@ const Home = () => {
     }
     setIdStaff('');
     setError(null);
-    setRouteManuTable(true);
+    setRouteMenuTable(true);
   }
 
   return (
