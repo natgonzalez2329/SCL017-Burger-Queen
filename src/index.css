@@ -13,22 +13,33 @@ code {
     monospace;
 }
 
-.background {
+.background-image {
   background-image: url(https://i.imgur.com/TsBn91j.jpg);
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  /* min-width: 100%; */
-/*   min-height: 100%; */
- /*  position: fixed; */
-
+}
+.blackBg {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.container-button{
+  height: 100vh;
 }
 .mustache {
   width: 15%;
 }
-
 .menu-tables {
   height: 60%;
 }
+.orders-command {
+  background: #e43a15;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #e65245, #e43a15);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #e65245, #e43a15); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+

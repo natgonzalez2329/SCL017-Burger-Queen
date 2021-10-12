@@ -11,7 +11,7 @@ const Breakfast = ({dataBreakfast, orderBreakfast, setOrderBreakfast}) => {
     <div>
       {
           dataBreakfast.map((item) => (
-          <li key={item.id} className="btn btn-warning m-2" onTouchStart={(() => addDataBreakfast(item.id))}>{item.item} - {item.price}</li>
+          <button key={item.id} className="btn bg-dark bg-gradient text-white m-2" onTouchStart={(() => addDataBreakfast(item.id))}>{item.item} - ${item.price}</button>
         ))
       }
     </div>

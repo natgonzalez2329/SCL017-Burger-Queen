@@ -1,9 +1,8 @@
 import db from '../Firebase';
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import { getIdCollection } from '../viewComponents/NewTable';
+import { collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
 
 
-const addStaffData = async(name, idStaff) => {
+const addStaffData = async(name, idStaff ) => {
   try {
     const docRef = await addDoc(collection(db, "staff"), {
       name,
@@ -13,7 +12,7 @@ const addStaffData = async(name, idStaff) => {
   } catch (e) {
     console.error("Error adding document: ", e);
   }
-}
+};
 
 const getStaffData = async(id) => {
   let existStaff = false;
@@ -32,18 +31,32 @@ const getStaffData = async(id) => {
     }
   });
   return existStaff;
-}
+};
 
-const addTablesData = async(table, client) => {
+const addTablesData = async(itemCollections) => {
+  const { table, client, idStaff, waiter, date, ordersList, total } = itemCollections;
   try {
     const docRef = await addDoc(collection(db, "tables"), {
       table,
-      client
+      client,
+      idStaff,
+      waiter,
+      date,
+      ordersList,
+      total
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
-}
+};
 
-export { getStaffData, addStaffData, addTablesData }
+const getTablesData = () => (onSnapshot(collection(db, "tables"), (snapshot) => {
+    const productsOrder = snapshot.docs.map((doc) =>({ ...doc.data(), id: doc.id }));
+    console.log('getdata')
+    console.log(productsOrder);
+    return productsOrder
+  }
+));
+
+export { getStaffData, addStaffData, addTablesData, getTablesData }

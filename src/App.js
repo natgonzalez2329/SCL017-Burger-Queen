@@ -18,13 +18,15 @@ function App() {
   const [table, setTable] = useState('');
   return (
     <Router>
-      <div className='m-0 vh-100 container-fluid  bg-dark bg-gradient text-white'>
+      <div className='m-0 container-fluid  bg-dark bg-gradient text-white blackBg'>
         <Switch>
           <Route path='/' exact>
             <Home />
           </Route>
           <Route path='/menuTables'>
-            <MenuTables newClientHandler={setClient} newTableClient={setTable}/>
+            <MenuTables 
+            newClientHandler={setClient} 
+            newTableClient={setTable} />
           </Route>
           <Route path='/menu'>
             <Menu />
@@ -39,7 +41,8 @@ function App() {
             <Tables />
           </Route>
           <Route path='/newTable'>
-            <NewTable client={client} table={table}/>
+            <NewTable client={client} 
+            table={table} />
           </Route>
           <Route component={NotFound}></Route>
         </Switch>

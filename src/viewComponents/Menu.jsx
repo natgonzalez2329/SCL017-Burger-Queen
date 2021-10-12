@@ -12,7 +12,6 @@ const Menu = () => {
   const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
-    /* fetchMenu(); */
     setBreakfast(getDataMenu.breakfast);
     setBurgers(getDataMenu.burgers);
     setExtras(getDataMenu.extras);
@@ -20,40 +19,45 @@ const Menu = () => {
   }, [getDataMenu]);
 
   return (
-    <div>
-      <Header />
-      <BackHomeButton />
+    <div className="container-fluid vh-100 bgcomponents">
+      <div className="row pt-1">
+        <div className="col-12 pt-3"><BackHomeButton /></div>
+        <div className="col-12"><Header /></div>
+      </div>      
       <h1 className="text-center">Menu</h1>
-      <div>
-        <ul>
-          <h3>BREAKFAST</h3>
+      <div className="my-3 mx-5 px-5">
+          <h3 className="text-warning mt-5 mb-3">BREAKFAST</h3>
           {breakfast.map((item) => (
-            <li key={item.id}>
-              {item.item} - {item.price}
-            </li>
+            <div key={item.id} className="row">
+              <span className="col-6">{item.item}</span> 
+              <span className="col-6 d-flex justify-content-end">${item.price}</span>
+            </div>
           ))}
       
-          <h3>BURGERS</h3>
+          <h3 className="text-warning mt-5 mb-3">BURGERS</h3>
+          
           {burgers.map((item) => (
-            <li key={item.id}>
-              {item.item} - {item.price}
-            </li>
+            <div key={item.id} className="row">
+              <span className="col-6">{item.item}</span> 
+              <span className="col-6 d-flex justify-content-end">${item.price}</span>
+            </div>
           ))}
       
-          <h3>EXTRAS</h3>
+          <h4 className="text-warning my-2">EXTRAS</h4>
           {extras.map((item) => (
-            <li key={item.id}>
-              {item.item} - {item.price}
-            </li>
+            <div key={item.id} className="row">
+              <span className="col-6">{item.item}</span> 
+              <span className="col-6 d-flex justify-content-end">${item.price}</span>
+            </div>
           ))}
           
-      <h3>DRINKS</h3>
+      <h3 className="text-warning mt-5 mb-3">DRINKS</h3>
       {drinks.map((item) => (
-            <li key={item.id}>
-              {item.item} - {item.price}
-            </li>
+            <div key={item.id} className="row">
+              <span className="col-6">{item.item}</span> 
+              <span className="col-6 d-flex justify-content-end">${item.price}</span>
+            </div>
           ))}
-        </ul>
       </div>
 
     </div>

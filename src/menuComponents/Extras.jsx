@@ -1,11 +1,17 @@
 import React from 'react';
 
-const Extras = ({dataExtras}) => {
+const Extras = ({ dataExtras, orderExtras, setOrderExtras }) => {
+
+  const addDataExtras = (id) => {
+    const newDataExtras = dataExtras.filter((item) => item.id === id);
+    setOrderExtras([...orderExtras, ...newDataExtras]);
+  }
+
   return (
     <div>
       { 
         dataExtras.map((item) => (
-          <li key={item.id} className="btn btn-success m-2">{item.item} - {item.price}</li>
+          <button key={item.id} className="btn bg-dark bg-gradient text-white m-2" onTouchStart={(() => addDataExtras(item.id))}>{item.item} - ${item.price}</button>
         ))
       }
     </div>

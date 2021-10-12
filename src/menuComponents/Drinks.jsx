@@ -1,11 +1,17 @@
 import React from 'react'
 
-const Drinks = ({dataDrinks}) => {
+const Drinks = ({ dataDrinks, orderDrinks, setOrderDrinks }) => {
+
+  const addDataDrinks = (id) => {
+    const newDataDrinks = dataDrinks.filter((item) => item.id === id);
+    setOrderDrinks([...orderDrinks, ...newDataDrinks]);
+  }
+
   return (
     <div>
       { 
         dataDrinks.map((item) => (
-          <li key={item.id} className="btn btn-primary m-2">{item.item} - {item.price}</li>
+          <button key={item.id} className="btn bg-dark bg-gradient text-white m-2" onTouchStart={(() => addDataDrinks(item.id))}>{item.item} - ${item.price}</button>
         ))
       }
     </div>

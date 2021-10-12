@@ -31,22 +31,22 @@ const Home = () => {
   }
 
   return (
-    <div className="m-0 container-fluid  vh-100 text-white background">
-      <Header />
+    <div className="container-fluid m-0 text-white background-image">
+      <div className="pt-4"><Header /></div>
       <div className="row">
         <div className="col-12 d-flex justify-content-end mr-5">
           <button onClick={() => setModalEnroll(true)} className='btn btn-warning btn-lg text-white btn-sm'>ENROLL</button>
           {modalEnroll && <ModalEnroll closeModal={setModalEnroll} />}
         </div>
       </div>
-      <div className="m-0 row justify-content-center align-items-center">
-      <div className="row p-5 m-5">
+      <div className="m-0 row justify-content-center align-items-center container-button">
+      <div className="row">
         <div className="col-12 d-flex justify-content-center align-items-center">
           <form onSubmit={(e) => accessStaff(e)}>
             {
               error ? <span className="text-danger">{error}</span> : null
             }
-            <input type="text" placeholder="ID" className="form-control mb-2" value={idStaff} onChange={(e) => setIdStaff(e.target.value)}/>
+            <input type="text" placeholder="ID" className="form-control mb-2 bg-dark bg-opacity-70 text-white" value={idStaff} onChange={(e) => setIdStaff(e.target.value)}/>
             <div className="col-12 d-flex justify-content-center">
                 <button className='btn btn-warning btn-md text-white' type='submit'>ACCESS</button>
                 {routeMenuTable && LinkToMenuTable()}
@@ -54,7 +54,7 @@ const Home = () => {
           </form>
         </div>
       </div>
-      <div className="row pt-5 mt-5 d-flex align-items-end">
+      <div className="row d-flex align-items-end">
         <div className="col-4 d-flex justify-content-center">
         <Link to='/menu' className='btn btn-warning btn-lg text-white'>
             MENU
