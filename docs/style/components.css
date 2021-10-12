@@ -1,0 +1,7 @@
+.tables_cuisine-grid {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 18rem;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  justify-content: center;
+}
