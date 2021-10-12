@@ -53,9 +53,6 @@ const Orders = ({orders, setOrders, client, table, waiter, idStaff, date}) => {
           arrayOrders.map((item) => (
           <li className="list-group-item mt-1 bg-dark bg-gradient text-white" key={item.id}>
             <span>{item.qty}   {item.item}   ${item.total.toFixed(2)}</span>
-            {/* <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-dash" viewBox="0 0 16 16">
-              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-            </svg></button> */}
             <button className="btn btn-danger btn-sm bg-gradient float-end d-flex justify-content-center" onTouchStart={() => removeItemLine(item.id)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
             </svg></button>
@@ -86,42 +83,3 @@ const Orders = ({orders, setOrders, client, table, waiter, idStaff, date}) => {
 }
 
 export default Orders
-
-
-    /* const desagruparPedido = (pedidoAgrupado) => {
-      let arrayPedidos = []
-      pedidoAgrupado.forEach(pedido => { */
-        //crear nuevos pedidos a partir de la cantidad del pedido
-        /* let newArrayOrder = [];
-        for(let i = 0; i < pedido.qty; i++) {
-          newArrayOrder.push({id: pedido.id, item: pedido.item, price: pedido.price})
-        }
-        arrayPedidos.push(newArrayOrder);
-
-      })
-      console.log(arrayPedidos)
-      return arrayPedidos;
-    } */
-
-      /*  const removeOneItem = (item) =>{
-        const orderToUpdate = Object.values(ordersFiltered).find(element => element.id === item.id);
-        if(orderToUpdate.qty === 1) {
-          removeItemLine(item.id);
-          // console.log('remove just one')
-        } else if(orderToUpdate.qty > 1){
-          const mapMenosUno = Object.values(ordersFiltered).map((element) => {
-            if(element.id === item.id) {
-              const itemModified = { ...item, qty: item.qty - 1 }
-              console.log(itemModified);
-              return itemModified
-            }
-            return element;
-          }) */
-          // console.log(mapMenosUno);
-          // console.log('tengo mas de uno')
-          // console.log('objeto modificado')
-          // console.log(orderToUpdate);
-          /*  const desagrupado = desagruparPedido(mapMenosUno);
-          setOrders(desagrupado);
-        }      
-    }  */

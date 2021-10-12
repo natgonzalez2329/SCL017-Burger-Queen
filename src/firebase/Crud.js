@@ -1,7 +1,6 @@
 import db from '../Firebase';
 import { collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
 
-
 const addStaffData = async(name, idStaff ) => {
   try {
     const docRef = await addDoc(collection(db, "staff"), {

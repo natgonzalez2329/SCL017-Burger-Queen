@@ -33,16 +33,13 @@ const Menu = () => {
               <span className="col-6 d-flex justify-content-end">${item.price}</span>
             </div>
           ))}
-      
           <h3 className="text-warning mt-5 mb-3">BURGERS</h3>
-          
           {burgers.map((item) => (
             <div key={item.id} className="row">
               <span className="col-6">{item.item}</span> 
               <span className="col-6 d-flex justify-content-end">${item.price}</span>
             </div>
           ))}
-      
           <h4 className="text-warning my-2">EXTRAS</h4>
           {extras.map((item) => (
             <div key={item.id} className="row">
@@ -50,16 +47,14 @@ const Menu = () => {
               <span className="col-6 d-flex justify-content-end">${item.price}</span>
             </div>
           ))}
-          
-      <h3 className="text-warning mt-5 mb-3">DRINKS</h3>
-      {drinks.map((item) => (
+          <h3 className="text-warning mt-5 mb-3">DRINKS</h3>
+          {drinks.map((item) => (
             <div key={item.id} className="row">
               <span className="col-6">{item.item}</span> 
               <span className="col-6 d-flex justify-content-end">${item.price}</span>
             </div>
           ))}
       </div>
-
     </div>
   );
 };

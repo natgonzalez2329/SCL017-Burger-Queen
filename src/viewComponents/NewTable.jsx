@@ -56,76 +56,53 @@ console.log(date)
       <div className="row">
         <div className="col-6">
           <h1 className="text-center">MENU</h1>
-            <div className="col-12container-tab m-1">
+          <div className="col-12container-tab m-1">
             <div className="bloc-tabs">
-        <button
-          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-          onTouchStart={() => toggleTab(1)}
-        >
-          BURGERS
-        </button>
-        <button
-          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-          onTouchStart={() => toggleTab(2)}
-        >
-          BREAKFAST
-        </button>
-        <button
-          className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-          onTouchStart={() => toggleTab(3)}
-        >
-          DRINKS
-        </button>
-      </div>
-
-      <div className="content-tabs">
-        <div
-          className={toggleState === 1 ? "content  active-content" : "content"}
-        >
-          <Burgers 
-              dataBurgers={burgers}
-              orderBurgers={orders}
-              setOrderBurgers={setOrders} />
-          <h5>EXTRAS</h5>
-          <Extras 
-              dataExtras={extras}
-              orderExtras={orders}
-              setOrderExtras={setOrders} />
-          <MessageButton />
-        </div>
-        <div
-          className={toggleState === 2 ? "content  active-content" : "content"}
-        >
-          <Breakfast 
-              dataBreakfast={breakfast} 
-              orderBreakfast={orders}
-              setOrderBreakfast={setOrders}
-              />
-          <MessageButton />
-        </div>
-        <div
-          className={toggleState === 3 ? "content  active-content" : "content"}
-        >
-          <Drinks 
-              dataDrinks={drinks}
-              orderDrinks={orders}
-              setOrderDrinks={setOrders} />
-          <MessageButton />
-        </div>
-      </div>
+              <button className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onTouchStart={() => toggleTab(1)}>BURGERS</button>
+              <button className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onTouchStart={() => toggleTab(2)}>BREAKFAST</button>
+              <button className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onTouchStart={() => toggleTab(3)}>DRINKS</button>
             </div>
-        </div>
-        <div className="col-6">
-          <h1 className="text-center"># Order</h1>
+            <div className="content-tabs">
+              <div className={toggleState === 1 ? "content  active-content" : "content"}>
+                <Burgers 
+                  dataBurgers={burgers}
+                  orderBurgers={orders}
+                  setOrderBurgers={setOrders} />
+                <h5>EXTRAS</h5>
+                <Extras 
+                  dataExtras={extras}
+                  orderExtras={orders}
+                  setOrderExtras={setOrders} />
+                <MessageButton />
+              </div>
+              <div className={toggleState === 2 ? "content  active-content" : "content"}>
+                <Breakfast 
+                  dataBreakfast={breakfast} 
+                  orderBreakfast={orders}
+                  setOrderBreakfast={setOrders} />
+                <MessageButton />
+              </div>
+              <div className={toggleState === 3 ? "content  active-content" : "content"}>
+                <Drinks 
+                  dataDrinks={drinks}
+                  orderDrinks={orders}
+                  setOrderDrinks={setOrders} />
+                <MessageButton />
+              </div>
+            </div>
+          </div>
+      </div>
+      <div className="col-6">
+        <h1 className="text-center"># Order</h1>
             <Orders 
-            orders={orders} 
-            setOrders={setOrders}
-            client={client}
-            table={table}
-            waiter={waiter}
-            idStaff={idStaff}
-            date={date}/>
-        </div>
+              orders={orders} 
+              setOrders={setOrders}
+              client={client}
+              table={table}
+              waiter={waiter}
+              idStaff={idStaff}
+              date={date}/>
+      </div>
       </div>
     </div>
   )

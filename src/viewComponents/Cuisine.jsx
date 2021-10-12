@@ -25,25 +25,25 @@ const Cuisine = () => {
         {
           cuisine.map((data) => (
             <div key={data.id} className="list-group-item list-group-item-action list-group-item bg-dark bg-opacity-75 m-2 overflow-auto text-white">
-              <div className="row">
-                <div className="col-4">
-                  <h6>Table: {data.table}</h6>
+                <div className="row">
+                  <div className="col-4">
+                    <h6>Table: {data.table}</h6>
+                  </div>
+                  <div className="col-8 ">
+                    <h6 className="text-end text-warning">{data.date}</h6>
+                    <h6 className="text-end">Waitress/Waiter: {data.waiter}</h6>
+                  </div>
                 </div>
-                <div className="col-8 ">
-                  <h6 className="text-end text-warning">{data.date}</h6>
-                  <h6 className="text-end">Waitress/Waiter: {data.waiter}</h6>
+                <div className="list-group list-group-flush">
+                  {
+                  data.ordersList.map((product) => 
+                    <li key={product.id} className="list-group-item">{product.qty} {product.item}</li>
+                    )
+                  }
                 </div>
             </div>
-              <div className="list-group list-group-flush">
-                {
-                data.ordersList.map((product) => 
-                  <li key={product.id} className="list-group-item">{product.qty} {product.item}</li>
-                  )
-                }
-              </div>
-            </div>
-            ))
-          }
+          ))
+        }
           </div>
     </div>
   )
