@@ -102,3 +102,4 @@ Este menú tiene 3 opciones:
 * Bootstrap 5.
 ## 9. Enlace web
 [Ver Página Web](https://mr-burger-b0ac8.web.app).
+*Diseñado para visualizarse en iPad (dimensiones 768 x 1024).
